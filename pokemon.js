@@ -17,7 +17,7 @@ async function getPokemonData(id) {
             entry => entry.language.name === 'en'
         )?.flavor_text || 'No flavor text available';
 
-        const fixedFlavorText = flavorText.replace(/\n/g, ' ').replace(/\s+/g, ' ').trim();
+        const fixedFlavorText = flavorText.replace(/\n/g, ' ').replace(/\s/g, ' ').trim();
 
         return {
             name: pokemonData.name,
