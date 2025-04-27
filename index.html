@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokemon API Demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .pokemon-card {
+            border: 1px solid #ccc;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Pokemon API Demo</h1>
+    <button onclick="getRandomPokemon()">Get Random Pokemon</button>
+    <div id="pokemonData" class="pokemon-card"></div>
+
+    <script src="pokemon.js"></script>
+    <script>
+        async function getRandomPokemon() {
+            const pokemonData = await assignmentTask();
+            displayPokemonData(pokemonData);
+        }
+
+        function displayPokemonData(data) {
+            const container = document.getElementById('pokemonData');
+            container.innerHTML = `
+                <h2>${data.name.charAt(0).toUpperCase() + data.name.slice(1)}</h2>
+                <p><strong>Height:</strong> ${data.height / 10}m</p>
+                <p><strong>Weight:</strong> ${data.weight / 10}kg</p>
+                <p><strong>Types:</strong> ${data.types.join(', ')}</p>
+                <p><strong>Habitat:</strong> ${data.habitat}</p>
+                <p><strong>Legendary:</strong> ${data.isLegendary ? 'Yes' : 'No'}</p>
+                <p><strong>Description:</strong> ${data.flavorText}</p>
+            `;
+        }
+    </script>
+</body>
+</html> 
