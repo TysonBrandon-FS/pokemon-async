@@ -17,7 +17,7 @@ async function getPokemonData(id) {
             entry => entry.language.name === 'en'
         )?.flavor_text || 'No flavor text available';
 
-        const fixedFlavorText = flavorText.replace(/\\n|\\f|\\r|\\t|\\v/g, ' ').replace(/\s+/g, ' ').trim();
+        const fixedFlavorText = flavorText.replace(/\n/g, ' ').replace(/\s+/g, ' ').trim();
 
         return {
             name: pokemonData.name,
@@ -42,7 +42,7 @@ async function assignmentTask() {
         console.log('Pokemon Data:', pokemonData);
         
         return pokemonData;
-        
+
     } catch (error) {
         console.error('Error in assignment task:', error);
         throw error;
